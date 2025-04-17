@@ -1,11 +1,13 @@
 from services.file_manager import FileHandler
 from datetime import datetime, timedelta
+import os
 
 
 class Skaitytojas:
     def __init__(self):
-        self.paskolintu_knygu_failas = "C:\\Users\\djfkj\\Desktop\\python_pagrindai\\atsiskaitymas123\\atsiskaitymas_project\\sarasai\\paskolintos_knygos.pkl"
-        self.skaitytoju_saraso_failas = "C:\\Users\\djfkj\\Desktop\\python_pagrindai\\atsiskaitymas123\\atsiskaitymas_project\\sarasai\\skaitytoju_sarasas.pkl"
+        base_dir = os.path.dirname(os.path.dirname(__file__))  # Get the project root directory
+        self.paskolintu_knygu_failas = os.path.join(base_dir, "data", "paskolintos_knygos.pkl")
+        self.skaitytoju_saraso_failas = os.path.join(base_dir, "data", "skaitytoju_sarasas.pkl")
         self.skaitytoju_sarasas = FileHandler.read_from_pickle(self.skaitytoju_saraso_failas, [])
         self.paskolintu_knygu_sarasas = FileHandler.read_from_pickle(self.paskolintu_knygu_failas, {})
         
