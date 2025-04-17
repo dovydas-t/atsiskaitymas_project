@@ -2,12 +2,15 @@ from services.file_manager import FileHandler
 from datetime import datetime
 from tabulate import tabulate
 from .knyga import Knyga
+import os
 
 
 class Biblioteka:
     def __init__(self):
-        self.failas = "C:\\Users\\djfkj\\Desktop\\python_pagrindai\\atsiskaitymas123\\atsiskaitymas_project\\sarasai\\knygu_sarasas.pkl"
-        self.pasalintu_knygu_failas = "C:\\Users\\djfkj\\Desktop\\python_pagrindai\\atsiskaitymas123\\atsiskaitymas_project\\sarasai\\pasalintos_knygos.pkl"
+        # Dynamically construct the file paths
+        base_dir = os.path.dirname(os.path.dirname(__file__))  # Get the project root directory
+        self.failas = os.path.join(base_dir, "data", "knygu_sarasas.pkl")
+        self.pasalintu_knygu_failas = os.path.join(base_dir, "data", "pasalintos_knygos.pkl")
         self.knygu_sarasas = FileHandler.read_from_pickle(self.failas, [])
 
     def prideti_knyga(self, knyga):

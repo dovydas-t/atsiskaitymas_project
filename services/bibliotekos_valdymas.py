@@ -4,6 +4,7 @@ from modules.skaitytojas import Skaitytojas
 from modules.knyga import Knyga
 from .file_manager import FileHandler
 import random
+from views.prints import Printai
 
 
 class BibliotekosValdymas:
@@ -13,15 +14,9 @@ class BibliotekosValdymas:
         self.skaitytojas = Skaitytojas()
         self.dabartinis_skaitytojo_id = None
 
-    def rodyti_pagrindini_meniu(self):
-        print("\n=== BIBLIOTEKOS VALDYMO SISTEMA ==\n")
-        print("1. Bibliotekininko prisijungimas")
-        print("2. Skaitytojo prisijungimas/registracija")
-        print("0. Išeiti")
-
     def paleidimas(self):
         while True:
-            self.rodyti_pagrindini_meniu()
+            Printai.rodyti_pagrindini_meniu()
             pasirinkimas = input("Pasirinkite veiksmą (0-2): ")
 
             match pasirinkimas:
@@ -73,20 +68,9 @@ class BibliotekosValdymas:
         else:
             print("\nKlaida. Netinkamas pasirinkimas.")
 
-    def rodyti_bibliotekininko_meniu(self):
-        print("\n=== BIBLIOTEKININKO MENIU ===\n")
-        print("1. Pridėti naują knygą į sąrašą")
-        print("2. Peržiūrėti visą knygų sąrašą")
-        print("3. Pašalinti senas knygas iš sąrašo")
-        print("4. Peržiūrėti pašalintų senų knygų sąrašą")
-        print("5. Peržiūrėti vėluojančias knygas")
-        print("6. Peržiūrėti statistiką")
-        print("7. Generuoti random knygų")
-        print("0. Atsijungti")
-
     def bibliotekininko_meniu(self):
         while True:
-            self.rodyti_bibliotekininko_meniu()
+            Printai.rodyti_bibliotekininko_meniu()
             pasirinkimas = input("Pasirinkite veiksmą (0-4): ")
 
             match pasirinkimas:
@@ -110,19 +94,9 @@ class BibliotekosValdymas:
                 case _:
                     print("\nKlaida. Netinkamas pasirinkimas.")
 
-    def rodyti_skaitytojo_meniu(self):
-        print("\n=== SKAITYTOJO MENIU ===\n")
-        print("1. Peržiūrėti visą knygų sąrašą")
-        print("2. Ieškoti knygos")
-        print("3. Pasiskolinti knygą")
-        print("4. Peržiūrėti jūsų pasiskolintas knygas")
-        print("5. Grąžinti knygą")
-        print("6. Tikrinti terminus")
-        print("0. Atsijungti")
-
     def skaitytojo_meniu(self):
         while True:
-            self.rodyti_skaitytojo_meniu()
+            Printai.rodyti_skaitytojo_meniu()
             pasirinkimas = input("Pasirinkite veiksmą (0-5): ")
 
             match pasirinkimas:
